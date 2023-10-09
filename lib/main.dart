@@ -1,3 +1,4 @@
+import 'package:code_comp/screen/landing_screen/landing_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,12 +10,28 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return MaterialApp(
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+          backgroundColor: Colors.white,
+          titleTextStyle: TextStyle(
+            color: Colors.black,
+          ),
         ),
       ),
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: (settings) {
+        switch (settings.name) {
+          case '/':
+            return MaterialPageRoute(
+              builder: (context) => LandingScreen(),
+            );
+        }
+        return null;
+      },
     );
   }
 }
